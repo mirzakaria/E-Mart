@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg sticky-top navbar-light" style="background-color: #e3f2fd;">
 	<div class="container">
 		<a class="navbar-brand" href="index.jsp"> <img
 			src="product-images/brand.png" width="30"
@@ -17,7 +17,7 @@
 			<ul class="navbar-nav ms-auto">
 				<li class="nav-item active"><a class="nav-link"
 					href="index.jsp">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="cart.jsp">Cart</a></li>
+				<li class="nav-item"><a class="nav-link" href="cart.jsp">Cart <span class="badge bg-dark px-1">${cartList.size()}</span> </a></li>
 				<%
 				if (auth != null) {
 				%>

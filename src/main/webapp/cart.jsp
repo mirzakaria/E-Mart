@@ -19,6 +19,8 @@ if (cartList != null) {
 	ProductDao pDao = new ProductDao(DBConnection.getConnection());
 	cartItem = pDao.getCartItems(cartList);
 	request.setAttribute("cartList", cartList);
+	int total = pDao.getTotalPrice(cartList);
+	request.setAttribute("total", total);
 }
 %>
 
@@ -44,7 +46,7 @@ if (cartList != null) {
 
 	<div class="container">
 		<div class="d-flex py-3">
-			<h3>Total price: ৳000</h3>
+			<h3>Total price: ৳${ (total > 0) ? total : 0 }</h3>
 			<a class="mx-3 btn btn-primary" href="#">Check out</a>
 		</div>
 

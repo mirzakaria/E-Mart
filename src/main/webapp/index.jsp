@@ -5,11 +5,19 @@
 <%@page import="com.zakaria.dao.*"%>
 <%@page import="com.zakaria.connection.DBConnection"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 
 <%
 Customer auth = (Customer) request.getSession().getAttribute("auth");
 if (auth != null) {
 	request.setAttribute("customer", auth);
+}
+
+
+ArrayList<Cart> cartList = (ArrayList<Cart>) session.getAttribute("cart-list");
+
+if (cartList != null) {
+	request.setAttribute("cartList", cartList);
 }
 
 ProductDao pDao = new ProductDao(DBConnection.getConnection());
@@ -29,7 +37,7 @@ List<Product> products = pDao.getAllProducts();
 	<%@include file="includes/navbar.jsp"%>
 
 	<div class="container">
-		<div class="card-header my-3 py-3" style="background:#F8F9FA;">All Products</div>
+		<div class="card-header text-center my-2"><b>All Products</b></div>
 		<div class="row">
 			<%
 			if (!products.isEmpty()) {

@@ -2,13 +2,19 @@
     pageEncoding="UTF-8"%>
 
 
-<%@page import="com.zakaria.model.Customer"%>
-
+<%@page import="com.zakaria.model.*"%>
+<%@page import="java.util.*"%>
 <%
 Customer auth = (Customer) request.getSession().getAttribute("auth");
 if (auth != null) {
 	response.sendRedirect("index.jsp");
 }
+
+ArrayList<Cart> cartList = (ArrayList<Cart>) session.getAttribute("cart-list");
+if (cartList != null) {
+	request.setAttribute("cartList", cartList);
+}
+
 %>
 
 

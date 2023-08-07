@@ -73,9 +73,29 @@ public class ProductDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
 		return products;
+	}
+	
+	public int getTotalPrice(ArrayList<Cart> cartList) {
+		int sum = 0;
+		
+		try {
+			if (cartList != null) {
+				for (Cart cart : cartList) {
+					query = "select * from products where p_id = ?";
+					preStatement = con.prepareStatement(query);
+					preStatement.setInt(1, cart.getId());
+					rs = preStatement.executeQuery();
+					
+					while (rs.next()) {
+						sum += rs.getInt("price")*cart.getQuantity();
+					}
+				}
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return sum;
 	}
 }
