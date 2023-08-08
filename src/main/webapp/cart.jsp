@@ -55,9 +55,9 @@ if (cartList != null) {
 				<tr>
 					<th scope="col">Name</th>
 					<th scope="col">Category</th>
+					<th scope="col">Quantity</th>
 					<th scope="col">Price</th>
-					<th scope="col">Buy Now</th>
-					<th scope="col">Cancel</th>
+					<th scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -69,18 +69,19 @@ if (cartList != null) {
 					<tr>
 					<td><%=pro.getName() %></td>
 					<td><%=pro.getCategory() %></td>
-					<td>৳<%=pro.getPrice() %></td>
+					
 					<td>
 						<form method="post" action="" class="form-inline">
 							<input type="hidden" name="id" value="<%=pro.getId() %>" class="form-input">
 							<div class="form-group d-flex justify-content-between w-25">
-								<a class="btn btn-sm btn-incre"><i class="fas fa-minus-square"></i></a>
-								<input type="number" name="quantity" class="form-control" value="1" readonly>
-								<a class="btn btn-sm btn-incre"><i class="fas fa-plus-square"></i></a>
+								<a class="btn btn-sm btn-decre" href="quan-inc-dec?action=dec&id=<%=pro.getId()%>"><i class="fas fa-minus-square"></i></a>
+								<input type="number" name="quantity" class="form-control" value="<%=pro.getQuantity()%>" readonly>
+								<a class="btn btn-sm btn-incre" href="quan-inc-dec?action=inc&id=<%=pro.getId()%>"><i class="fas fa-plus-square"></i></a>
 							</div>
 						</form>
 					</td>
-					<td><a class="btn btn-sm btn-danger">Remove</a></td>
+					<td>৳<%=pro.getPrice() %></td>
+					<td><a class="btn btn-sm btn-danger" href="remove-from-cart?id=<%= pro.getId() %>">Remove</a></td>
 				</tr>
 			<%
 				}
