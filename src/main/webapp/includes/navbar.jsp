@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg sticky-top navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
 	<div class="container">
 		<a class="navbar-brand" href="index.jsp"> <img
 			src="product-images/brand.png" width="30"

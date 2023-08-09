@@ -50,14 +50,14 @@ if (cartList != null) {
 			<a class="mx-3 btn btn-primary" href="#">Check out</a>
 		</div>
 
-		<table class="table table-light">
+		<table class="table table-light text-center">
 			<thead>
 				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Category</th>
-					<th scope="col">Quantity</th>
-					<th scope="col">Price</th>
-					<th scope="col">Action</th>
+					<th>Name</th>
+					<th>Category</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -73,15 +73,23 @@ if (cartList != null) {
 					<td>
 						<form method="post" action="" class="form-inline">
 							<input type="hidden" name="id" value="<%=pro.getId() %>" class="form-input">
-							<div class="form-group d-flex justify-content-between w-25">
+							<div class="form-group d-flex justify-content-between">
 								<a class="btn btn-sm btn-decre" href="quan-inc-dec?action=dec&id=<%=pro.getId()%>"><i class="fas fa-minus-square"></i></a>
-								<input type="number" name="quantity" class="form-control" value="<%=pro.getQuantity()%>" readonly>
+								<input type="number" name="quantity" class="form-control text-center" value="<%=pro.getQuantity()%>" readonly>
 								<a class="btn btn-sm btn-incre" href="quan-inc-dec?action=inc&id=<%=pro.getId()%>"><i class="fas fa-plus-square"></i></a>
 							</div>
 						</form>
 					</td>
+
 					<td>৳<%=pro.getPrice() %></td>
-					<td><a class="btn btn-sm btn-danger" href="remove-from-cart?id=<%= pro.getId() %>">Remove</a></td>
+					<td>
+					<form method="post" action="order-now" class="form-inline">
+						<input type="hidden" name="id" value="<%=pro.getId() %>" class="form-input">
+						<input type="hidden" name="quantity" value="<%=pro.getQuantity() %>" class="form-input">
+						<button type="submit" class="btn btn-sm btn-success">Buy</button>
+						<a class="btn btn-sm btn-danger" href="remove-from-cart?id=<%= pro.getId() %>">Remove</a>
+					</form>
+					</td>
 				</tr>
 			<%
 				}
