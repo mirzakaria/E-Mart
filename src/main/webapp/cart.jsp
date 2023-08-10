@@ -46,14 +46,14 @@ if (cartList != null) {
 
 	<div class="container">
 		<div class="d-flex py-3">
-			<h3>Total price: ৳${ (total > 0) ? total : 0 }</h3>
-			<a class="mx-3 btn btn-primary" href="#">Check out</a>
+			<h3>Total price: ৳ ${ (total > 0) ? total : 0 }</h3>
+			<a class="mx-3 btn btn-primary" href="check-out">Check out</a>
 		</div>
 
 		<table class="table table-light text-center">
 			<thead>
 				<tr>
-					<th>Name</th>
+					<th>Product name</th>
 					<th>Category</th>
 					<th>Quantity</th>
 					<th>Price</th>
