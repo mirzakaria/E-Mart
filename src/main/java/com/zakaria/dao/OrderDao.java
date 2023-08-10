@@ -3,6 +3,8 @@ package com.zakaria.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.zakaria.model.Order;
 
@@ -34,5 +36,32 @@ public class OrderDao {
 		}
 		
 		return isSuccess;
+	}
+	
+	public List<Order> getAllOrder(int id) {
+		List<Order> list = new ArrayList<Order>();
+		
+		try {
+			query = "select * from orders inner join products on orders.p_id = products.p_id where c_id = ? order by o_date desc";
+			preStatement = con.prepareStatement(query);
+			preStatement.setInt(1, id);
+			rs = preStatement.executeQuery();
+			
+			while(rs.next()) {
+				Order order = new Order();
+				order.setDate(rs.getString("o_date"));
+				order.setName(rs.getString("p_name"));
+				order.setCategory(rs.getString("category"));
+				order.setQuantity(rs.getInt("o_quantity"));
+				order.setPrice(rs.getInt("price") * rs.getInt("o_quantity"));
+				
+				list.add(order);
+			}
+							
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 }

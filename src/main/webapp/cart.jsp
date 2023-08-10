@@ -66,7 +66,7 @@ if (cartList != null) {
 			if (cartList != null) {
 				for (Cart pro : cartItem) {
 			%>
-					<tr>
+				<tr>
 					<td><%=pro.getName() %></td>
 					<td><%=pro.getCategory() %></td>
 					
