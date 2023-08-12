@@ -49,6 +49,7 @@ public class OrderDao {
 			
 			while(rs.next()) {
 				Order order = new Order();
+				order.setoId(rs.getInt("o_id"));
 				order.setDate(rs.getString("o_date"));
 				order.setName(rs.getString("p_name"));
 				order.setCategory(rs.getString("category"));
@@ -63,5 +64,20 @@ public class OrderDao {
 		}
 		
 		return list;
+	}
+	
+	public boolean cancelOrder(int id) {
+		boolean isDeleted = false;
+		try {
+			query = "delete from orders where o_id = ?";
+			preStatement = con.prepareStatement(query);
+			preStatement.setInt(1, id);
+			
+			isDeleted = preStatement.executeUpdate() > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return isDeleted;
 	}
 }

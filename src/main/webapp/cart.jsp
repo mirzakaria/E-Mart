@@ -53,6 +53,7 @@ if (cartList != null) {
 		<table class="table table-light text-center">
 			<thead>
 				<tr>
+					<th>#</th>
 					<th>Product name</th>
 					<th>Category</th>
 					<th>Quantity</th>
@@ -64,9 +65,11 @@ if (cartList != null) {
 			
 			<%
 			if (cartList != null) {
+				int count = 0;
 				for (Cart pro : cartItem) {
 			%>
 				<tr>
+					<td><%=++count %>
 					<td><%=pro.getName() %></td>
 					<td><%=pro.getCategory() %></td>
 					

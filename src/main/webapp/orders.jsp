@@ -11,12 +11,21 @@
 Customer auth = (Customer) request.getSession().getAttribute("auth");
 if (auth != null) {
 	request.setAttribute("customer", auth);
-} else {
-	response.sendRedirect("login.jsp");
 }
 
-OrderDao oDao = new OrderDao(DBConnection.getConnection());
-List<Order> list = oDao.getAllOrder(auth.getId());
+
+ArrayList<Cart> cartList = (ArrayList<Cart>) session.getAttribute("cart-list");
+
+List<Order> list = null;
+if (auth == null) {
+	response.sendRedirect("login.jsp");
+	
+} else {
+	request.setAttribute("customer", auth);
+	OrderDao oDao = new OrderDao(DBConnection.getConnection());
+	 list = oDao.getAllOrder(auth.getId());
+}
+
 %>
 
 
@@ -36,28 +45,33 @@ List<Order> list = oDao.getAllOrder(auth.getId());
 
 		<table class="table table-light text-center">
 			<thead>
+			<tr>
+				<th>#</th>
 				<th>Placing date</th>
 				<th>Product name</th>
 				<th>Category</th>
 				<th>Quantity</th>
 				<th>Price</th>
 				<th>Action</th>
-				</tr>
+			</tr>
 			</thead>
 			<tbody>
 				<%
 				if (list != null) {
+					int count = 0;
 					for (Order order : list) {
+						
 				%>
 				<tr>
+					<td><%=++count %></td>
 					<td><%=order.getDate() %></td>
 					<td><%=order.getName() %></td>
 					<td><%=order.getCategory() %></td>
 					<td><%=order.getQuantity() %></td>
 					<td><%=order.getPrice() %></td>	
-					<td>Remove</td>
+					<td><a class="btn btn-danger" href="cancel-order?id=<%=order.getoId() %>">Cancel Order</a></td>
 				</tr>
-				<%	
+				<%
 					}
 				}
 				%>

@@ -28,20 +28,20 @@ if (cartList != null) {
 <%@include file="includes/navbar.jsp" %>
 <div class="container">
 	<div class="card w-50 mx-auto my-5">
-		<div class="card-header text-center">User Login</div>
+		<div class="card-header text-center"><b>Login</b></div>
 			<div class="card-body">
 
 				<form action="customer-login" method="post">
 
 					<div class="form-group">
-						<label>E-mail Address</label> <input type="email"
+						<label class="form-label">E-mail Address</label> <input type="email"
 							class="form-control" name="login-email"
 							placeholder="Enter your email" required>
 					</div>
 					<br>
 					<div class="form-group">
-						<label>Password</label> <input type="password"
-							class="form-control" name="login-password" placeholder="********"
+						<label class="form-label">Password</label> <input type="password"
+							class="form-control" name="login-password" placeholder="*************"
 							required>
 					</div>
 					<br>
