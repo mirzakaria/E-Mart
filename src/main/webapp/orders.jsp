@@ -13,8 +13,11 @@ if (auth != null) {
 	request.setAttribute("customer", auth);
 }
 
-
 ArrayList<Cart> cartList = (ArrayList<Cart>) session.getAttribute("cart-list");
+
+if (cartList != null) {
+	request.setAttribute("cartList", cartList);
+}
 
 List<Order> list = null;
 if (auth == null) {

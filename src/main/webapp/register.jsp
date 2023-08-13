@@ -32,7 +32,7 @@ if (cartList != null) {
 			<div class="card-header text-center"><b>Be A Customer!</b></div>
 			<div class="card-body">
 
-				<form action="#" method="post">
+				<form action="add-new-customer" method="post">
 					<div class="form-group mb-3">
 						<label class="form-label">Full Name</label>
 						<input type="text" class="form-control"

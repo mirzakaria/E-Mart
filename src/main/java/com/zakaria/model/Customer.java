@@ -10,7 +10,7 @@ public class Customer {
 	public Customer() {
 		super();
 	}
-	
+
 	public Customer(int id, String name, String email, String password) {
 		super();
 		this.id = id;

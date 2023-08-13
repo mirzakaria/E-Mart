@@ -45,5 +45,23 @@ public class CustomerDao {
 		return customer;
 	}
 	
+	public boolean addNewCustomer(Customer c) {
+		boolean isAdded = false;
+		
+		try {
+			query = "insert into customers (c_name, email, password) values (?, ?, ?)";
+			preStatement = con.prepareStatement(query);
+			preStatement.setString(1, c.getName());
+			preStatement.setString(2, c.getEmail());
+			preStatement.setString(3, c.getPassword());
+			
+			isAdded = preStatement.executeUpdate() > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+		return false;
+	}
+	
 	
 }
